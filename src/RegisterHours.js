@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const RegisterHours = () => {
+  const RegisterHours = () => {
   const [employeeId, setEmployeeId] = useState("");
   const [hours, setHours] = useState("");
   const [message, setMessage] = useState("");
@@ -8,12 +8,12 @@ const RegisterHours = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hours < 0 || hours > 60) {
-      setMessage("Hours must be between 0 and 60.");
+      setMessage("Hours must be between 0 and 60."); // Mensaje actualizado
       return;
     }
     setMessage("Hours successfully registered!");
     console.log({ employeeId, hours });
-  };
+  };  
 
   return (
     <div>

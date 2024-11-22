@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-const CalculateDeductions = () => {
+  const CalculateDeductions = () => {
   const [grossPay, setGrossPay] = useState("");
+  const [deductionRate, setDeductionRate] = useState(10); // Nueva configuración (porcentaje)
   const [deductions, setDeductions] = useState(null);
 
   const handleCalculate = () => {
-    const fixedDeduction = 50; // Ejemplo
-    const percentageDeduction = 0.1 * grossPay;
+    const fixedDeduction = 50;
+    const percentageDeduction = (deductionRate / 100) * grossPay; // Ajuste dinámico
     setDeductions(fixedDeduction + percentageDeduction);
   };
 
@@ -23,10 +24,18 @@ const CalculateDeductions = () => {
         />
       </label>
       <br />
+      <label>
+        Deduction Rate (%):
+        <input
+          type="number"
+          value={deductionRate}
+          onChange={(e) => setDeductionRate(e.target.value)}
+          required
+        />
+      </label>
+      <br />
       <button onClick={handleCalculate}>Calculate Deductions</button>
       {deductions !== null && <p>Total Deductions: ${deductions.toFixed(2)}</p>}
     </div>
   );
 };
-
-export default CalculateDeductions;
